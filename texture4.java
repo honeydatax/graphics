@@ -16,6 +16,12 @@ public class texture4 extends Applet {
 	Polygon poly2;
 	Polygon poly3;
 	Polygon poly4;
+	Polygon poly5;
+	Polygon poly6;
+	Polygon poly7;
+	Polygon poly8;
+	Polygon poly9;
+	Polygon poly10;
 	Timer t ;
 	VolatileImage bitmap1;
 	VolatileImage bitmap2;
@@ -59,6 +65,12 @@ public class texture4 extends Applet {
 		poly2=new Polygon();
 		poly3=new Polygon();
 		poly4=new Polygon();
+		poly5=new Polygon();
+		poly6=new Polygon();
+		poly7=new Polygon();
+		poly8=new Polygon();
+		poly9=new Polygon();
+		poly10=new Polygon();
 		gg1.setColor(cc);
 		gg2.setColor(cc);
 		gg3.setColor(c);
@@ -102,7 +114,43 @@ public class texture4 extends Applet {
 			}
 
 		}
+		gg1.setColor(c);
+		poly6.addPoint(85,70);
+		poly6.addPoint(105,80);
+		poly6.addPoint(105,190);
+		poly6.addPoint(85,200);
+		gg1.fillPolygon(poly6);
+		poly8.addPoint(195,100);
+		poly8.addPoint(205,110);
+		poly8.addPoint(205,153);
+		poly8.addPoint(195,158);
+		gg1.fillPolygon(poly8);
+		poly10.addPoint(240,115);
+		poly10.addPoint(245,120);
+		poly10.addPoint(245,137);
+		poly10.addPoint(240,140);
+		gg1.fillPolygon(poly10);
+
 		gg1.dispose();
+		gg2.setColor(c);
+		poly5.addPoint(180,80);
+		poly5.addPoint(205,70);
+		poly5.addPoint(205,200);
+		poly5.addPoint(180,190);
+		gg2.fillPolygon(poly5);
+		poly7.addPoint(80,110);
+		poly7.addPoint(90,100);
+		poly7.addPoint(90,158);
+		poly7.addPoint(80,153);
+		gg2.fillPolygon(poly7);
+		poly9.addPoint(40,120);
+		poly9.addPoint(45,115);
+		poly9.addPoint(45,140);
+		poly9.addPoint(40,137);
+		gg2.fillPolygon(poly9);
+
+
+
 		gg2.dispose();
 		gg3.dispose();
 		gg4.dispose();
