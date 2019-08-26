@@ -3,8 +3,10 @@ import java.applet.*;
 import java.awt.*;
 import java.lang.Math;
 import java.awt.image.*;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 
-public class texture4 extends Applet {
+public class texture4 extends Applet implements MouseListener{
 	int ii=1;
 	int x=50;
 	int y=50;
@@ -172,7 +174,7 @@ public class texture4 extends Applet {
 		poly4.addPoint(290,125);
 		poly4.addPoint(580,250);
 		poly4.addPoint(0,250);
-
+		addMouseListener(this);
 		//t.scheduleAtFixedRate(tk,100,200);
 	}
 	public void destroy(){
@@ -198,4 +200,22 @@ public class texture4 extends Applet {
 
 	
 	}
+		public void mouseClicked(MouseEvent ee){
+			cox.showStatus("click event");
+			}
+		public void mouseExited(MouseEvent ee){
+			cox.showStatus("out mouse event");
+			}
+		public void mouseEntered(MouseEvent ee){
+			cox.showStatus("enter mouse event");
+			}
+		public void mousePressed(MouseEvent ee){
+			cox.showStatus("press mouse event");
+			}
+		public void mouseReleased(MouseEvent ee){
+			cox.showStatus("Released mouse event");
+			}
+			
+			
+
 }
