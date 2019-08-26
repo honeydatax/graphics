@@ -175,6 +175,7 @@ public class texture4 extends Applet implements MouseListener{
 		poly4.addPoint(580,250);
 		poly4.addPoint(0,250);
 		addMouseListener(this);
+		cox.showStatus("click in a door");
 		//t.scheduleAtFixedRate(tk,100,200);
 	}
 	public void destroy(){
@@ -200,20 +201,40 @@ public class texture4 extends Applet implements MouseListener{
 
 	
 	}
-		public void mouseClicked(MouseEvent ee){
-			cox.showStatus("click event");
+		public void mouseClicked(MouseEvent e){
+			int xp =e.getX();
+			int yp =e.getY();
+			int door=-1;
+			// poly 5
+			if ( xp>(180+290) && yp>70 && xp<(205+290) && yp<200) door=0;
+			// poly 7
+			if ( xp>(80+290) && yp>100 && xp<(90+290) && yp<158) door=1;
+			// poly 9
+			if ( xp>(40+290) && yp>115 && xp<(45+290) && yp<140) door=2;
+			// poly 6
+			if ( xp>(85) && yp>70 && xp<(105) && yp<200) door=3;
+			// poly 8
+			if ( xp>(195) && yp>100 && xp<(205) && yp<158) door=4;
+			// poly 10
+			if ( xp>(240) && yp>115 && xp<(245) && yp<140) door=5;
+
+
+			if (door >-1) cox.showStatus("enter in door:" + Integer.toString(door));
+			if (door == -1 ) cox.showStatus("click in a door");
+
+
 			}
+
 		public void mouseExited(MouseEvent ee){
-			cox.showStatus("out mouse event");
 			}
 		public void mouseEntered(MouseEvent ee){
-			cox.showStatus("enter mouse event");
+
 			}
 		public void mousePressed(MouseEvent ee){
-			cox.showStatus("press mouse event");
+
 			}
 		public void mouseReleased(MouseEvent ee){
-			cox.showStatus("Released mouse event");
+
 			}
 			
 			
