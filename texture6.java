@@ -6,6 +6,7 @@ import java.awt.image.*;
 
 public class texture6 extends Applet {
 	int ii=0;
+	int iii=0;
 	int x=50;
 	int y=50;
 	int xx=1;
@@ -27,6 +28,8 @@ public class texture6 extends Applet {
 			public void run(){
 				Graphics g =getGraphics();
 				if (ii < 230){
+					iii++;
+					if (iii>1) iii=0;
 					paint(g);
 				}
 				if (ii > 230) t.cancel();
@@ -41,7 +44,6 @@ public class texture6 extends Applet {
 		int nn;
 		int nnn;
 		Color cc1;
-		ii=1;
 		cox=this.getAppletContext();
 		bitmap1=createVolatileImage(600,300);
 		bitmap2=createVolatileImage(600,300);
@@ -96,7 +98,8 @@ public class texture6 extends Applet {
 		ii++;
 		if (ii>124) ii=0;
 		gg2.setClip(polys[ii]);
-		gg2.drawImage(bitmap1,0,0,null);
+		if (iii==1) gg2.drawImage(bitmap1,0,0,null);
+		if (iii!=1) gg2.drawImage(bitmap2,0,0,null);
 		g.drawImage(bitmap3,0,0,null);
 
 		
