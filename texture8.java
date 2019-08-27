@@ -95,7 +95,7 @@ public class texture8 extends Applet implements KeyListener{
 			//p4
 			polys[n].addPoint(getCCurve(zzz),getZZ(zzz));
 			//p5
-			polys[n].addPoint((centerX(p2z)+getCurve(p2z)*2)+zzz,getZZ(p2z));
+			polys[n].addPoint(650,300);
 			//p6
 			polys[n].addPoint(650,300);
 
