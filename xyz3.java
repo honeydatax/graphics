@@ -67,7 +67,6 @@ public class xyz3 extends Applet {
 			ay=(int) Math.round(Math.random()*5.00);
 		}
 	public void genarete(){
-			xz=0;
 			rndn();
 		
 
