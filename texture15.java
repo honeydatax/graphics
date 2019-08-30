@@ -101,13 +101,14 @@ public class texture15 extends Applet {
 		
 	public void paint (Graphics g) {
 			int bn=0;
+			int bnn=150;
+			
+			for (bn=0;bn<300;bn++){
+				bnn=bn;
+				if (bn>150) bnn=300-bn;
+				gg1.drawImage(bitmap4,bn,150-bnn*1000/250,bn+1,150+bnn*1000/250,px+bn,0,px+bn+1,300,null);
 
-			poly.addPoint(-px,0);
-			poly.addPoint(300,0);
-			poly.addPoint(300,300);
-			poly.addPoint(-px,300);
-			gg1.setClip(poly);
-			gg1.drawImage(bitmap4,-px,0,null);
+			}
 			poly.reset();
 			poly.addPoint(0,0);
 			poly.addPoint(300,0);
@@ -117,7 +118,7 @@ public class texture15 extends Applet {
 			gg1.setClip(poly);
 			for (bn=0;bn<800;bn=bn+60){
 				if (bn<300)gg1.drawOval(150-(bn/2),0,bn+5,300);
-				gg1.drawOval(150-(bn*1000/800),0-bn,bn*1000/400+5,bn*2);
+				gg1.drawOval(150-(bn*1000/800),280-bn,bn*1000/400+5,bn*2);
 			}
 			poly.reset();
 			gg.drawImage(bitmap2,0,0,null);
