@@ -68,8 +68,10 @@ public class texture25 extends Applet {
 		nnn=0;
 		gg1.setColor(cc);
 		for (nnn=0;nnn<580;nnn=nnn+100){
-			for (n=1;n<300;n=n+n){
-				gg1.fillOval(nnn,n,100,n);
+			for (n=1;n<300;n=n+(n*1000/909)){
+				for (n1=0;n1<4;n1++){
+					gg1.fillOval(nnn,n+(n/4*n1),100,n/4);
+				}	
 			}
 		}
 		gg2.dispose();
