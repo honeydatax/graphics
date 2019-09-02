@@ -46,7 +46,9 @@ public class texture25 extends Applet {
 
 	
 	public void init(){
-		int n1;
+		int n1=1;
+		int n2=1;
+		int n3=1;
 		int n;
 		int nn;
 		int nnn;
@@ -67,11 +69,12 @@ public class texture25 extends Applet {
 		gg1.fillRect(0,0,650,300);
 		nnn=0;
 		gg1.setColor(cc);
-		for (nnn=0;nnn<580;nnn=nnn+100){
-			for (n=1;n<300;n=n+(n*1000/909)){
-				for (n1=0;n1<4;n1++){
-					gg1.fillOval(nnn,n+(n/4*n1),100,n/4);
-				}	
+		for (n=1;n<300;n=n+n2){
+			for (nnn=0;nnn<580;nnn=nnn+80){
+				n2=n/4;
+				if (n2<4)n2=1;
+				gg1.fillOval(nnn,n,80,n/4);
+					
 			}
 		}
 		gg2.dispose();
