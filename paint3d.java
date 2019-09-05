@@ -152,7 +152,11 @@ public class paint3d extends Applet implements MouseListener{
 				for (ny=0;ny<8;ny=ny+1){
 					for (nx=0;nx<8;nx=nx+1){
 						zz=nz*12;
+						gg1.setColor(c);
 						if (maps[(nz-(24-8))*64+ny*8+nx+6] == 1 ) gg1.fillRect(center(600,zz)+(nx*(zz/8)),center(300,zz)+(ny*(zz/8)),(zz/8),(zz/8));
+						gg1.setColor(cc);
+						
+						if (maps[(nz-(24-8))*64+ny*8+nx+6] == 1 ) gg1.drawRect(center(600,zz)+(nx*(zz/8)),center(300,zz)+(ny*(zz/8)),(zz/8),(zz/8));
 
 				}
 				
