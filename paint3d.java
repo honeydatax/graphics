@@ -48,6 +48,7 @@ public class paint3d extends Applet implements MouseListener{
 		for (n=0;n<(12*8);n=n+12){
 			gg1.drawRect(0,n,12,12);
 		}
+		gg1.fillRect(0,12*9,12,12);
 		maps[0]=(int) '3';
 		maps[1]=(int) 'D';
 		maps[2]=8;
@@ -86,6 +87,7 @@ public class paint3d extends Applet implements MouseListener{
 			
 			if ( xp>center(600,zz) && yp>center(300,zz) && xp<(center(600,zz)+zz) && yp<(center(300,zz)+zz)) door=0;
 			if ( xp>0 && yp>0 && xp<(13) && yp<(12*8)) door=1;
+			if ( xp>0 && yp>(12*9) && xp<(13) && yp<(12*10)) door=2;
 			if (door == 0 ) {
 				xp=(xp-center(600,zz))/(zz/8);
 				yp=(yp-center(300,zz))/(zz/8);
@@ -97,6 +99,12 @@ public class paint3d extends Applet implements MouseListener{
 				zz=(24-8+yp)*12;
 				repaint();				
 			}
+			if (door == 2 ) {
+				gridv=gridv+1;
+				if (gridv>1)gridv=0;
+				repaint();				
+			}
+
 
 			}
 
