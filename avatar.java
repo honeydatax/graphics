@@ -1,6 +1,7 @@
 import java.util.*;
 import java.applet.*;
 import java.awt.*;
+import java.io.*;
 import java.lang.Math;
 import java.awt.image.*;
 import java.awt.event.MouseListener;
@@ -37,7 +38,7 @@ public class avatar extends Applet implements MouseListener{
 			}
 		};
 
-	
+
 	public void init(){
 		int n;
 		Color cc1;
@@ -86,11 +87,13 @@ public class avatar extends Applet implements MouseListener{
 		addMouseListener(this);
 		cox.showStatus("paint");
 		//t.scheduleAtFixedRate(tk,100,200);
+		dataLoad();
 	}
 	public void destroy(){
 		//t.cancel();
 		ii=230;
 		gg1.dispose();
+		dataSave();
 	}
 
 
@@ -191,4 +194,59 @@ public class avatar extends Applet implements MouseListener{
 			if (zz>=zzz) nz=60;
 		}
 	}
+	public void dataLoad(){
+		int n=0;
+		int nn0=0;
+		int nn1=0;
+		int nn2=0;
+		int nn3=0;
+		int nn4=0;
+		int nn5=0;
+
+		FileInputStream f1 =null;
+			try{
+			f1 = new FileInputStream("avatar.3d");
+			nn0=f1.read();
+			nn1=f1.read();
+			nn2=f1.read();
+			nn3=f1.read();
+			nn4=f1.read();
+			nn5=f1.read();
+			if (nn0==maps[0] && nn1==maps[1] && nn2==maps[2] && nn3==maps[3] && nn4==maps[4] && nn5==maps[5]){
+				for (n=0;n<(8*8*8);n++){
+					maps[n+6]=f1.read();
+				}
+			}
+			f1.close();
+		}catch(IOException e){
+
+		}
+
+	}
+	
+	public void dataSave(){
+		int n=0;
+		int nn0=0;
+		int nn1=0;
+		int nn2=0;
+		int nn3=0;
+		int nn4=0;
+		int nn5=0;
+
+		//FileOutputStream f2 =null;
+		FileWriter f2 =null;
+	
+			try{
+			f2 = new FileWriter("avatar.3d",false);
+				for (n=0;n<(8*8*8+6);n++){
+					f2.write(maps[n]);
+			}
+			f2.close();
+		}catch(IOException e){
+
+		}
+		
+
+	}
+
 }
