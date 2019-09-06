@@ -3,9 +3,11 @@ import java.applet.*;
 import java.awt.*;
 import java.io.*;
 import java.lang.Math;
+import java.io.FilePermission;
 import java.awt.image.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+
 
 public class avatar extends Applet implements MouseListener{
 	int ii=1;
@@ -52,13 +54,13 @@ public class avatar extends Applet implements MouseListener{
 			gg1.drawRect(0,n,12,12);
 		}
 		gg1.fillRect(0,12*9,12,12);
-		maps[0]=(int) '3';
-		maps[1]=(int) 'D';
+		maps[0]=51;
+		maps[1]=68;
 		maps[2]=8;
 		maps[4]=8;
 		maps[5]=8;
 		for (n=6;n<(8*8*8+6);n++){
-			maps[5]=0;
+			maps[n]=0;
 		}
 		colors[0]=new Color(255,255,255);
 		colors[1]=new Color(0,0,0);
@@ -212,6 +214,7 @@ public class avatar extends Applet implements MouseListener{
 			nn3=f1.read();
 			nn4=f1.read();
 			nn5=f1.read();
+			System.out.println(Integer.toString(nn0)+","+Integer.toString(nn1)+","+Integer.toString(nn2)+","+Integer.toString(nn3)+","+Integer.toString(nn4)+","+Integer.toString(nn5)+",");
 			if (nn0==maps[0] && nn1==maps[1] && nn2==maps[2] && nn3==maps[3] && nn4==maps[4] && nn5==maps[5]){
 				for (n=0;n<(8*8*8);n++){
 					maps[n+6]=f1.read();
@@ -233,7 +236,6 @@ public class avatar extends Applet implements MouseListener{
 		int nn4=0;
 		int nn5=0;
 
-		//FileOutputStream f2 =null;
 		FileWriter f2 =null;
 	
 			try{
