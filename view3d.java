@@ -195,7 +195,7 @@ public class view3d extends Applet implements MouseListener{
 
 		for (nz=0;nz<8;nz++){
 			for (ny=0;ny<8;ny++){
-				for (nx=6;nx<8;nx++){
+				for (nx=0;nx<8;nx++){
 					setxyz(nx+4,ny+4,nz+4,getxyz(nx,ny,nz));
 				}
 			}
