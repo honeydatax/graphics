@@ -215,6 +215,8 @@ public class view3d extends Applet implements MouseListener{
 	public void dataRun(){
 		double radius=0;
 		double degs=0;		
+		double rr=0;
+		int rrr=0;
 		int nx=0;
 		int ny=0;
 		int nz=0;
@@ -227,11 +229,11 @@ public class view3d extends Applet implements MouseListener{
 		int nnz=0;
 		
 		for (radius=0.00;radius<8.00;radius++){
-			for (degs=0.00;degs<64.00;degs++){
-				nnnx=(int) ((4.00)+radius*Math.sin(degs/32.00*pii));
-				nnnz=(int) ((4.00)+radius*Math.cos(degs/32.00*pii));
-				nnx=(int) ((8.00)+radius*Math.sin((degs+degrees)/32.00*pii));
-				nnz=(int) ((8.00)+radius*Math.cos((degs+degrees)/32.00*pii));
+			for (degs=0.00;degs<16.00;degs++){
+				nnnx=(int) ((4.00)+radius*Math.sin(degs/(8.00)*pii));
+				nnnz=(int) ((4.00)+radius*Math.cos(degs/(8.00)*pii));
+				nnx=(int) ((8.00)+radius*Math.sin((degs+degrees)/(8.00)*pii));
+				nnz=(int) ((8.00)+radius*Math.cos((degs+degrees)/(8.00)*pii));
 				if (nnnx>-1 && nnnx<8 && nnnz>-1 && nnnz<8){
 				if (nnx>-1 && nnx<16 && nnz>-1 && nnz<16){
 						for (ny=0;ny<8;ny++){
