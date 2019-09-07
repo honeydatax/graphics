@@ -228,7 +228,7 @@ public class view3d extends Applet implements MouseListener{
 		int nnny=0;
 		int nnz=0;
 		
-		for (radius=0.00;radius<8.00;radius++){
+		for (radius=0.00;radius<6.00;radius++){
 			for (degs=0.00;degs<16.00;degs++){
 				nnnx=(int) ((4.00)+radius*Math.sin(degs/(8.00)*pii));
 				nnnz=(int) ((4.00)+radius*Math.cos(degs/(8.00)*pii));
