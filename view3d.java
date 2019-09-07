@@ -19,7 +19,7 @@ public class view3d extends Applet implements MouseListener{
 	int yy=1;
 	int zz=24*12;
 	double degrees=0.00;
-	double divisions=34.00;
+	double divisions=42.00;
 	int gridv=1;
 	int [] maps= new int[8*8*8+6]; 
 	int [] maps2= new int[16*16*16]; 
@@ -240,7 +240,7 @@ public class view3d extends Applet implements MouseListener{
 				nnz=(int) ((8.00)+radius*Math.cos((degs+degrees)/(divisions/2)*Math.PI));
 				if (nnnx>-1 && nnnx<8 && nnnz>-1 && nnnz<8){
 					if(maps3[nnnz*8+nnnx]==0){
-						maps3[nnnz*8+nnnx]=0;
+						maps3[nnnz*8+nnnx]=1;
 						if (nnx>-1 && nnx<16 && nnz>-1 && nnz<16){
 							for (ny=0;ny<8;ny++){
 								colorc=getxyz(nnnx,ny,nnnz);
