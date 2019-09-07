@@ -151,8 +151,8 @@ public class view3d extends Applet implements MouseListener{
 						zz=nz*6;
 						if (maps2[(nz-(24-16))*256+ny*16+nx] != 0 ) gg1.setColor(colors[maps2[(nz-(24-16))*256+ny*16+nx]]);
 						if (maps2[(nz-(24-16))*256+ny*16+nx] != 0 ) gg1.fillRect(center(600,zz)+(nx*(zz/16)),center(300,zz)+(ny*(zz/16)),(zz/16),(zz/16));
-						if (maps2[(nz-(24-16))*256+ny*16+nx] == 1 ) gg1.setColor(cc);
-						if (maps2[(nz-(24-16))*256+ny*16+nx] != 1 ) gg1.setColor(c);
+						if (maps2[(nz-(24-16))*256+ny*16+nx] == 15 ) gg1.setColor(c);
+						if (maps2[(nz-(24-16))*256+ny*16+nx] != 15 ) gg1.setColor(cc);
 						if (maps2[(nz-(24-16))*256+ny*16+nx] != 0 ) gg1.drawRect(center(600,zz)+(nx*(zz/16)),center(300,zz)+(ny*(zz/16)),(zz/16),(zz/16));
 
 				}
@@ -200,7 +200,7 @@ public class view3d extends Applet implements MouseListener{
 		for (nz=0;nz<8;nz++){
 			for (ny=0;ny<8;ny++){
 				for (nx=0;nx<8;nx++){
-					setxyz(nx+5,ny+5,nz+5,getxyz(nx,ny,nz));
+					setxyz(nx+4,ny+4,nz+4,getxyz(nx,ny,nz));
 				}
 			}
 		}
@@ -228,10 +228,10 @@ public class view3d extends Applet implements MouseListener{
 		
 		for (radius=0.00;radius<8.00;radius++){
 			for (degs=0.00;degs<64.00;degs++){
-				nnnx=(int) ((4.00-radius)+radius*Math.sin(degs/32.00*pii));
-				nnnz=(int) ((4.00-radius)+radius*Math.cos(degs/32.00*pii));
-				nnx=(int) ((8.00-radius)+radius*Math.sin(degs+degrees/32.00*pii));
-				nnx=(int) ((8.00-radius)+radius*Math.cos(degs+degrees/32.00*pii));
+				nnnx=(int) ((4.00)+radius*Math.sin(degs/32.00*pii));
+				nnnz=(int) ((4.00)+radius*Math.cos(degs/32.00*pii));
+				nnx=(int) ((8.00)+radius*Math.sin((degs+degrees)/32.00*pii));
+				nnz=(int) ((8.00)+radius*Math.cos((degs+degrees)/32.00*pii));
 				if (nnnx>-1 && nnnx<8 && nnnz>-1 && nnnz<8){
 				if (nnx>-1 && nnx<16 && nnz>-1 && nnz<16){
 						for (ny=0;ny<8;ny++){
