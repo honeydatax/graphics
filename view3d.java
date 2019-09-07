@@ -10,12 +10,15 @@ import java.awt.event.MouseEvent;
 
 
 public class view3d extends Applet implements MouseListener{
+	double pii=3.1415927;
 	int ii=1;
 	int x=50;
 	int y=50;
 	int xx=1;
 	int yy=1;
 	int zz=24*12;
+	double degrees=0.00;
+	double divisions=16.00;
 	int gridv=1;
 	int [] maps= new int[8*8*8+6]; 
 	int [] maps2= new int[16*16*16]; 
@@ -31,13 +34,17 @@ public class view3d extends Applet implements MouseListener{
 	
 	TimerTask tk =new TimerTask(){
 			public void run(){
-			/*	Graphics g =getGraphics();
+				Graphics g =getGraphics();
 				if (ii < 230){
+					degrees=degrees+1;
+					if (degrees>63)degrees=0;
+					dataClear();
+					dataRun();
 					paint(g);
 				}
 				if (ii > 230) t.cancel();
 				
-			*/	
+				
 			}
 		};
 
@@ -59,10 +66,7 @@ public class view3d extends Applet implements MouseListener{
 		for (n=6;n<(8*8*8+6);n++){
 			maps[n]=0;
 		}
-		for (n=0;n<(16*16*16);n++){
-			maps2[n]=0;
-		}
-
+		dataClear();
 		colors[0]=new Color(255,255,255);
 		colors[1]=new Color(0,0,0);
 		colors[2]=new Color(0,0,255);
@@ -79,15 +83,15 @@ public class view3d extends Applet implements MouseListener{
 		colors[14]=new Color(255,128,255);
 		colors[15]=new Color(255,255,255);
 		setBackground(cc);
-		//t = new Timer("Timer");
+		t = new Timer("Timer");
 		addMouseListener(this);
 		cox.showStatus("paint");
-		//t.scheduleAtFixedRate(tk,100,200);
+		t.scheduleAtFixedRate(tk,1000,1000);
 		dataLoad();
 		dataCopy();
 	}
 	public void destroy(){
-		//t.cancel();
+		t.cancel();
 		ii=230;
 		gg1.dispose();
 	}
@@ -138,7 +142,7 @@ public class view3d extends Applet implements MouseListener{
 			int nz=0;
 			int zzz=zz-1;
 			gg1.setColor(cc);
-			gg1.fillRect(center(600,6*24),center(300,6*24),center(600,6*24)+6*24,center(300,6*24)+6*24);
+			gg1.fillRect(0,0,600,300);
 
 			gg1.setColor(c);
 			for (nz=(24-16);nz<24;nz=nz+1){
@@ -196,8 +200,48 @@ public class view3d extends Applet implements MouseListener{
 		for (nz=0;nz<8;nz++){
 			for (ny=0;ny<8;ny++){
 				for (nx=0;nx<8;nx++){
-					setxyz(nx+4,ny+4,nz+4,getxyz(nx,ny,nz));
+					setxyz(nx+5,ny+5,nz+5,getxyz(nx,ny,nz));
 				}
+			}
+		}
+	}
+	public void dataClear(){
+		int n=0;
+		for (n=0;n<(16*16*16);n++){
+			maps2[n]=0;
+		}
+
+	}
+	public void dataRun(){
+		double radius=0;
+		double degs=0;		
+		int nx=0;
+		int ny=0;
+		int nz=0;
+		int colorc=0;
+		int nnx=0;
+		int nny=0;
+		int nnnz=0;
+		int nnnx=0;
+		int nnny=0;
+		int nnz=0;
+		
+		for (radius=0.00;radius<8.00;radius++){
+			for (degs=0.00;degs<64.00;degs++){
+				nnnx=(int) ((4.00-radius)+radius*Math.sin(degs/32.00*pii));
+				nnnz=(int) ((4.00-radius)+radius*Math.cos(degs/32.00*pii));
+				nnx=(int) ((8.00-radius)+radius*Math.sin(degs+degrees/32.00*pii));
+				nnx=(int) ((8.00-radius)+radius*Math.cos(degs+degrees/32.00*pii));
+				if (nnnx>-1 && nnnx<8 && nnnz>-1 && nnnz<8){
+				if (nnx>-1 && nnx<16 && nnz>-1 && nnz<16){
+						for (ny=0;ny<8;ny++){
+							colorc=getxyz(nnnx,ny,nnnz);
+							if  (colorc!=0 && colorc<16) setxyz(nnx,ny,nnz,colorc);
+
+						}
+					}
+		
+				}		
 			}
 		}
 	}
