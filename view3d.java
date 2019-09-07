@@ -11,6 +11,7 @@ import java.awt.event.MouseEvent;
 
 public class view3d extends Applet implements MouseListener{
 	double pii=3.1415927;
+	double [] rpi= new double[]{0.00,1.00,2.00,4.00,8.00,16.00,16.00};
 	int ii=1;
 	int x=50;
 	int y=50;
@@ -18,10 +19,11 @@ public class view3d extends Applet implements MouseListener{
 	int yy=1;
 	int zz=24*12;
 	double degrees=0.00;
-	double divisions=16.00;
+	double divisions=34.00;
 	int gridv=1;
 	int [] maps= new int[8*8*8+6]; 
 	int [] maps2= new int[16*16*16]; 
+	int [] maps3= new int[8*8+1]; 
 	Color c=new Color(0,0,0);
 	Color [] colors=new Color[16];
 	int colorss=1;
@@ -36,8 +38,8 @@ public class view3d extends Applet implements MouseListener{
 			public void run(){
 				Graphics g =getGraphics();
 				if (ii < 230){
-					degrees=degrees+1;
-					if (degrees>63)degrees=0;
+					degrees=degrees+1.00;
+					if (degrees>divisions)degrees=0.00;
 					dataClear();
 					dataRun();
 					paint(g);
@@ -209,6 +211,7 @@ public class view3d extends Applet implements MouseListener{
 		int n=0;
 		for (n=0;n<(16*16*16);n++){
 			maps2[n]=0;
+			if (n<8*8) maps3[n]=0;
 		}
 
 	}
@@ -216,6 +219,7 @@ public class view3d extends Applet implements MouseListener{
 		double radius=0;
 		double degs=0;		
 		double rr=0;
+		double rr1=0;
 		int rrr=0;
 		int nx=0;
 		int ny=0;
@@ -228,18 +232,21 @@ public class view3d extends Applet implements MouseListener{
 		int nnny=0;
 		int nnz=0;
 		
-		for (radius=0.00;radius<6.00;radius++){
-			for (degs=0.00;degs<16.00;degs++){
-				nnnx=(int) ((4.00)+radius*Math.sin(degs/(8.00)*pii));
-				nnnz=(int) ((4.00)+radius*Math.cos(degs/(8.00)*pii));
-				nnx=(int) ((8.00)+radius*Math.sin((degs+degrees)/(8.00)*pii));
-				nnz=(int) ((8.00)+radius*Math.cos((degs+degrees)/(8.00)*pii));
+		for (radius=1.00;radius<6.00;radius++){
+			for (degs=0.00;degs<divisions;degs++){
+				nnnx=(int) ((4.00)+radius*Math.sin(degs/(divisions/2)*Math.PI));
+				nnnz=(int) ((4.00)+radius*Math.cos(degs/(divisions/2)*Math.PI));
+				nnx=(int) ((8.00)+radius*Math.sin((degs+degrees)/(divisions/2)*Math.PI));
+				nnz=(int) ((8.00)+radius*Math.cos((degs+degrees)/(divisions/2)*Math.PI));
 				if (nnnx>-1 && nnnx<8 && nnnz>-1 && nnnz<8){
-				if (nnx>-1 && nnx<16 && nnz>-1 && nnz<16){
-						for (ny=0;ny<8;ny++){
-							colorc=getxyz(nnnx,ny,nnnz);
-							if  (colorc!=0 && colorc<16) setxyz(nnx,ny,nnz,colorc);
+					if(maps3[nnnz*8+nnnx]==0){
+						maps3[nnnz*8+nnnx]=0;
+						if (nnx>-1 && nnx<16 && nnz>-1 && nnz<16){
+							for (ny=0;ny<8;ny++){
+								colorc=getxyz(nnnx,ny,nnnz);
+								if  (colorc!=0 && colorc<16) setxyz(nnx,ny,nnz,colorc);
 
+							}
 						}
 					}
 		
