@@ -19,7 +19,7 @@ public class view3d extends Applet implements MouseListener{
 	int yy=1;
 	int zz=24*12;
 	double degrees=0.00;
-	double divisions=42.00;
+	double divisions=32.00;
 	int gridv=1;
 	int [] maps= new int[8*8*8+6]; 
 	int [] maps2= new int[16*16*16]; 
@@ -90,7 +90,9 @@ public class view3d extends Applet implements MouseListener{
 		cox.showStatus("paint");
 		t.scheduleAtFixedRate(tk,1000,1000);
 		dataLoad();
-		dataCopy();
+		dataClear();
+		dataRun();
+
 	}
 	public void destroy(){
 		t.cancel();
@@ -152,10 +154,10 @@ public class view3d extends Applet implements MouseListener{
 					for (nx=0;nx<16;nx=nx+1){
 						zz=nz*6;
 						if (maps2[(nz-(24-16))*256+ny*16+nx] != 0 ) gg1.setColor(colors[maps2[(nz-(24-16))*256+ny*16+nx]]);
-						if (maps2[(nz-(24-16))*256+ny*16+nx] != 0 ) gg1.fillRect(center(600,zz)+(nx*(zz/16)),center(300,zz)+(ny*(zz/16)),(zz/16),(zz/16));
+						if (maps2[(nz-(24-16))*256+ny*16+nx] != 0 ) gg1.fillRect((center(600,zz)+(nx*(zz/4))-150),(center(300,zz)+(ny*(zz/4))-50),(zz/4),(zz/4));
 						if (maps2[(nz-(24-16))*256+ny*16+nx] == 15 ) gg1.setColor(c);
 						if (maps2[(nz-(24-16))*256+ny*16+nx] != 15 ) gg1.setColor(cc);
-						if (maps2[(nz-(24-16))*256+ny*16+nx] != 0 ) gg1.drawRect(center(600,zz)+(nx*(zz/16)),center(300,zz)+(ny*(zz/16)),(zz/16),(zz/16));
+						if (maps2[(nz-(24-16))*256+ny*16+nx] != 0 ) gg1.drawRect((center(600,zz)+(nx*(zz/4))-150),(center(300,zz)+(ny*(zz/4))-50),(zz/4),(zz/4));
 
 				}
 				
@@ -232,7 +234,7 @@ public class view3d extends Applet implements MouseListener{
 		int nnny=0;
 		int nnz=0;
 		
-		for (radius=1.00;radius<6.00;radius++){
+		for (radius=1.00;radius<8.00;radius++){
 			for (degs=0.00;degs<divisions;degs++){
 				nnnx=(int) ((4.00)+radius*Math.sin(degs/(divisions/2)*Math.PI));
 				nnnz=(int) ((4.00)+radius*Math.cos(degs/(divisions/2)*Math.PI));
