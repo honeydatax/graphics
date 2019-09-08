@@ -155,10 +155,10 @@ public class view3d extends Applet implements MouseListener{
 					for (nx=0;nx<16;nx=nx+1){
 						zz=nz*6;
 						if (maps2[(nz-(24-16))*256+ny*16+nx] != 0 ) gg1.setColor(colors[maps2[(nz-(24-16))*256+ny*16+nx]]);
-						if (maps2[(nz-(24-16))*256+ny*16+nx] != 0 ) gg1.fillRect((center(600,zz)+(nx*(zz/4))-150),(center(300,zz)+(ny*(zz/4))-50),(zz/4),(zz/4));
+						if (maps2[(nz-(24-16))*256+ny*16+nx] != 0 ) gg1.fillRect((center(600,zz)+((nx)*(zz/4))-150),(center(300,zz)+(ny*(zz/4))-50),(zz/2),(zz/4));
 						if (maps2[(nz-(24-16))*256+ny*16+nx] == 15 ) gg1.setColor(c);
 						if (maps2[(nz-(24-16))*256+ny*16+nx] != 15 ) gg1.setColor(cc);
-						if (maps2[(nz-(24-16))*256+ny*16+nx] != 0 ) gg1.drawRect((center(600,zz)+(nx*(zz/4))-150),(center(300,zz)+(ny*(zz/4))-50),(zz/4),(zz/4));
+						if (maps2[(nz-(24-16))*256+ny*16+nx] != 0 ) gg1.drawRect((center(600,zz)+((nx)*(zz/4))-150),(center(300,zz)+(ny*(zz/4))-50),(zz/2),(zz/4));
 
 				}
 				
