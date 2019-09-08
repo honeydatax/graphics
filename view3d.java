@@ -11,7 +11,8 @@ import java.awt.event.MouseEvent;
 
 public class view3d extends Applet implements MouseListener{
 	double pii=3.1415927;
-	double [] rpi= new double[]{0.00,1.00,2.00,4.00,8.00,16.00,16.00};
+	double [] rpi1= new double[]{2.00,2.00,8.00,12.00,16.00,20.00,24.00,25.00,26.00,34.00,35.00,36.00};
+	double [] rpi2= new double[]{2.00,2.00,8.00,12.00,16.00,20.00,24.00,25.00,26.00,34.00,35.00,36.00};
 	int ii=1;
 	int x=50;
 	int y=50;
@@ -234,12 +235,14 @@ public class view3d extends Applet implements MouseListener{
 		int nnny=0;
 		int nnz=0;
 		
-		for (radius=1.00;radius<8.00;radius++){
-			for (degs=0.00;degs<divisions;degs++){
-				nnnx=(int) ((4.00)+radius*Math.sin(degs/(divisions/2)*Math.PI));
-				nnnz=(int) ((4.00)+radius*Math.cos(degs/(divisions/2)*Math.PI));
-				nnx=(int) ((8.00)+radius*Math.sin((degs+degrees)/(divisions/2)*Math.PI));
-				nnz=(int) ((8.00)+radius*Math.cos((degs+degrees)/(divisions/2)*Math.PI));
+		for (radius=1.00;radius<10.00;radius++){
+			rr=divisions;
+			rr1=degrees;
+			for (degs=0.00;degs<rr;degs++){
+				nnnx=(int) ((4.00)+radius*Math.sin(degs/(rr/2)*Math.PI));
+				nnnz=(int) ((4.00)+radius*Math.cos(degs/(rr/2)*Math.PI));
+				nnx=(int) ((8.00)+radius*Math.sin((degs+rr1)/(rr/2)*Math.PI));
+				nnz=(int) ((8.00)+radius*Math.cos((degs+rr1)/(rr/2)*Math.PI));
 				if (nnnx>-1 && nnnx<8 && nnnz>-1 && nnnz<8){
 					if(maps3[nnnz*8+nnnx]==0){
 						maps3[nnnz*8+nnnx]=1;
